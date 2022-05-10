@@ -17,4 +17,7 @@ public class TypeMvtStk extends AbstractEntity {
 
 	@Column(name="typeMvtStk")
 	private String typeMvtStk;
+	
+	@Column(name="identreprise")
+	private Integer idEntreprise;
 }
