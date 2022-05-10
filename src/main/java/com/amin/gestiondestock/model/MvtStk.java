@@ -15,13 +15,12 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @Entity
 @Table(name="mvtstk")
-public class MvtStk extends AbstractEntity{
+public class MvtStk extends AbstractEntity {
 	
 	@Column(name="datemvt")
 	private Instant dateMvt;

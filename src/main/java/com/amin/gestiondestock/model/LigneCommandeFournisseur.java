@@ -15,7 +15,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=true)
@@ -29,7 +28,7 @@ public class LigneCommandeFournisseur extends AbstractEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="idcommandefournisseur")
-	private CommandeFournisseur commandeFournisseur;
+	private CommandeFournisseur commandesFournisseur;
 	
 	@Column(name="quantite")
 	private BigDecimal quantite;

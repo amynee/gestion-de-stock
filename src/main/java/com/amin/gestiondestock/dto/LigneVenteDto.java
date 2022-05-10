@@ -2,6 +2,7 @@ package com.amin.gestiondestock.dto;
 
 import java.math.BigDecimal;
 
+import com.amin.gestiondestock.model.LigneVente;
 import com.amin.gestiondestock.model.Ventes;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +18,31 @@ public class LigneVenteDto {
 	private BigDecimal quantite;
 	
 	private BigDecimal prixUnitaire;
+	
+	public static LigneVenteDto fromEntity(LigneVente ligneVente) {
+		if (ligneVente == null) {
+			return null;
+		}
+		
+		return LigneVenteDto.builder()
+				.id(ligneVente.getId())
+				.vente(VentesDto.fromEntity(ligneVente.getVente()))
+				.quantite(ligneVente.getQuantite())
+				.prixUnitaire(ligneVente.getPrixUnitaire())
+				.build();
+	}
+	
+	public static LigneVente toEtity(LigneVenteDto ligneVenteDto) {
+		if (ligneVenteDto == null) {
+			return null;
+		}
+		
+		LigneVente ligneVente = new LigneVente();
+		ligneVente.setId(ligneVenteDto.getId());
+		ligneVente.setVente(VentesDto.toEtity(ligneVenteDto.getVente()));
+		ligneVente.setQuantite(ligneVenteDto.getQuantite());
+		ligneVente.setPrixUnitaire(ligneVenteDto.getPrixUnitaire());
+		
+		return ligneVente;
+	}
 }

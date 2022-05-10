@@ -14,11 +14,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 
 @Data
-@Builder
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class AbstractEntity implements Serializable {
