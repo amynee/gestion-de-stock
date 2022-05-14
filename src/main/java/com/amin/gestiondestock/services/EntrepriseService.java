@@ -1,2 +1,4 @@
-package com.amin.gestiondestock.services;public interface EntrepriseService {
+package com.amin.gestiondestock.services;
+
+public interface EntrepriseService {
 }

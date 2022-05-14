@@ -1,2 +1,4 @@
-package com.amin.gestiondestock.services;public interface FournisseurService {
+package com.amin.gestiondestock.services;
+
+public interface FournisseurService {
 }
