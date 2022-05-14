@@ -25,6 +25,6 @@ public interface CategoryApi {
     @GetMapping(value = APP_ROOT + "/categories/all", produces = MediaType.APPLICATION_JSON_VALUE)
     List<CategoryDto> findAll();
 
-    @GetMapping(value = APP_ROOT + "categories/delete/{idCategory}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/categories/delete/{idCategory}", produces = MediaType.APPLICATION_JSON_VALUE)
     void delete(@PathVariable("idCategory") Integer id);
 }
