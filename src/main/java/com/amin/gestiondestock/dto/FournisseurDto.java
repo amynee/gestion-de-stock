@@ -27,7 +27,7 @@ public class FournisseurDto {
 	
 	private List<CommandeFournisseurDto> commandeFournisseurs;
 	
-	public static FournisseurDto formEntity(Fournisseur fournisseur) {
+	public static FournisseurDto fromEntity(Fournisseur fournisseur) {
 		if (fournisseur == null) {
 			return null;
 		}
@@ -43,7 +43,7 @@ public class FournisseurDto {
 				.build();
 	}
 	
-	public static Fournisseur toEtity(FournisseurDto fournisseurDto) {
+	public static Fournisseur toEntity(FournisseurDto fournisseurDto) {
 		if (fournisseurDto == null) {
 			return null;
 		}
