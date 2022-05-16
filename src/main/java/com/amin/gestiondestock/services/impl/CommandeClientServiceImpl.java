@@ -54,7 +54,7 @@ public class CommandeClientServiceImpl  implements CommandeClientService {
         Optional<Client> client = clientRepository.findById(dto.getClient().getId());
         if (client.isEmpty()) {
             log.warn("Client with ID {} was not found in the DB", dto.getClient().getId());
-            throw new EntityNotFoundException("Aucun client avec l'ID " + dto.getClient().getId() + " n'a été trouvé dans la BDD");
+            throw new EntityNotFoundException("Aucun client avec l'ID " + dto.getClient().getId() + " n'a été trouvé dans la BDD", ErrorCodes.Client_NOT_FOUND);
         }
 
         List<String> articleErrors = new ArrayList<>();

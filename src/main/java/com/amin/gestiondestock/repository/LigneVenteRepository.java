@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.amin.gestiondestock.model.LigneVente;
 
-public interface ligneVenteRepository extends JpaRepository<LigneVente, Integer> {
+public interface LigneVenteRepository extends JpaRepository<LigneVente, Integer> {
 
 }

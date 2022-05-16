@@ -31,7 +31,7 @@ public class ClientServiceImpl implements ClientService {
         List<String> errors = ClientValidator.validate(dto);
         if (!errors.isEmpty()) {
             log.error("Client is not valid {}", dto);
-            throw new InvalidEntityException("L'article n'est pas valide", ErrorCodes.Client_NOT_VALID, errors);
+            throw new InvalidEntityException("Client n'est pas valide", ErrorCodes.Client_NOT_VALID, errors);
         }
 
         return ClientDto.fromEntity(

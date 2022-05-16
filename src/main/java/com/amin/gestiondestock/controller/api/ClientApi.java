@@ -16,7 +16,7 @@ public interface ClientApi {
     @PostMapping(value = APP_ROOT + "/clients/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ClientDto save(@RequestBody ClientDto dto);
 
-    @GetMapping(value = APP_ROOT + "/client/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/clients/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
     ClientDto findById(@PathVariable("idClient") Integer id);
 
 
@@ -24,5 +24,5 @@ public interface ClientApi {
     List<ClientDto> findAll();
 
     @GetMapping(value = APP_ROOT + "/clients/delete/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
-    void delete(@PathVariable("idArtidClienticle") Integer id);
+    void delete(@PathVariable("idClient") Integer id);
 }
