@@ -1,2 +1,14 @@
-package com.amin.gestiondestock.services;public interface VentesService {
+package com.amin.gestiondestock.services;
+
+import com.amin.gestiondestock.dto.VentesDto;
+
+import java.util.List;
+
+public interface VentesService {
+
+    VentesDto save(VentesDto dto);
+    VentesDto findById(Integer id);
+    VentesDto findByCode(String code);
+    List<VentesDto> findAll();
+    void delete(Integer id);
 }

@@ -1,9 +1,11 @@
 package com.amin.gestiondestock.model;
 
 import java.time.Instant;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -31,4 +33,7 @@ public class Ventes extends AbstractEntity {
 	
 	@Column(name="identreprise")
 	private Integer idEntreprise;
+
+	@OneToMany(mappedBy = "vente")
+	private List<LigneVente> ligneVentes;
 }

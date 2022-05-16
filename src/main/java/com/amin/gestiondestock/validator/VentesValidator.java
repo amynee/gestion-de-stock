@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amin.gestiondestock.dto.VentesDto;
+import org.springframework.util.StringUtils;
 
 
 public class VentesValidator {
@@ -16,7 +17,7 @@ public class VentesValidator {
 			errors.add("Veuillez renseigner la date de vente");
 		}
 		
-		if(ventesDto.getCode() == null) {
+		if(!StringUtils.hasLength(ventesDto.getCode())) {
 			errors.add("Veuillez renseigner la code de vente");
 		}
 		

@@ -1,7 +1,9 @@
 package com.amin.gestiondestock.dto;
 
 import java.time.Instant;
+import java.util.List;
 
+import com.amin.gestiondestock.model.Article;
 import com.amin.gestiondestock.model.Ventes;
 
 import lombok.Builder;
@@ -18,6 +20,8 @@ public class VentesDto {
 	private Instant dateVente;
 	
 	private String commentaire;
+
+	private List<LigneVenteDto> ligneVentes;
 	
 	public static VentesDto fromEntity(Ventes ventes) {
 		if (ventes == null) {
