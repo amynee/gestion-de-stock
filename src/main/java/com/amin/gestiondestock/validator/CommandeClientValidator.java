@@ -15,6 +15,14 @@ public class CommandeClientValidator {
 		if (commandeClientDto == null || !StringUtils.hasLength(commandeClientDto.getCode())) {
 			errors.add("Veuillez renseigner le code de la category");
 		}
+
+		if (commandeClientDto.getClient() == null) {
+			errors.add("Pas de client pour cette commande");
+		} else {
+			if (commandeClientDto.getClient().getId() == null) {
+				errors.add("Veuillez confirmer une client pour cette commande");
+			}
+		}
 		
 		return errors;
 	}
