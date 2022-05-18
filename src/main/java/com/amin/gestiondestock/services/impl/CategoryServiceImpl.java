@@ -61,7 +61,7 @@ public class CategoryServiceImpl implements CategoryService {
             log.error("Category CODE is null");
         }
 
-        Optional<Category> category = categoryRepository.findArticleByCodeCategory(code);
+        Optional<Category> category = categoryRepository.findCategoryByCode(code);
         return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() ->
                 new EntityNotFoundException(
                     "Aucun category avec le CODE = " + code + " n'été trouvé dans le BDD",

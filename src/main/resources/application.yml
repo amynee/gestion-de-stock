@@ -13,4 +13,10 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
 server:
-  port: 8886 
+  port: 8886
+
+flickr:
+  apiKey: 4322fae6de24711fd053991dfb07d16f
+  apiSecret: c61f0ee8d7a7bb9f
+  appKey: 72157720843731122-8efe0f4e920d6349
+  appSecret: 4aa4caa32dd8130c
