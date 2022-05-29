@@ -4,9 +4,11 @@ import com.amin.gestiondestock.controller.api.EntrepriseApi;
 import com.amin.gestiondestock.dto.EntrepriseDto;
 import com.amin.gestiondestock.services.EntrepriseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 public class EntrepriseController implements EntrepriseApi {
 
     private EntrepriseService entrepriseService;

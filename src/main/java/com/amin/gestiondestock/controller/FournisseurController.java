@@ -4,9 +4,11 @@ import com.amin.gestiondestock.controller.api.FournisseurApi;
 import com.amin.gestiondestock.dto.CategoryDto;
 import com.amin.gestiondestock.dto.FournisseurDto;
 import com.amin.gestiondestock.services.FournisseurService;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 public class FournisseurController implements FournisseurApi {
 
     private FournisseurService fournisseurService;

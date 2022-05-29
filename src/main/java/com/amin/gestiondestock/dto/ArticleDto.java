@@ -18,7 +18,7 @@ public class ArticleDto {
 	
 	private String designation;
 	
-	private String prixUnitaireHt;
+	private BigDecimal prixUnitaireHt;
 	
 	private BigDecimal tauxTva;
 	

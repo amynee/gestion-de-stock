@@ -2,11 +2,12 @@ package com.amin.gestiondestock.controller;
 
 import com.amin.gestiondestock.controller.api.UtilisateurApi;
 import com.amin.gestiondestock.dto.UtilisateurDto;
-import com.amin.gestiondestock.repository.UtilisateurRepository;
 import com.amin.gestiondestock.services.UtilisateurService;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 public class UtilisateurController implements UtilisateurApi {
 
     public UtilisateurService utilisateurService;

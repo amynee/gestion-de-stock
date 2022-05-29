@@ -4,9 +4,11 @@ import com.amin.gestiondestock.controller.api.ArticleApi;
 import com.amin.gestiondestock.dto.ArticleDto;
 import com.amin.gestiondestock.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 public class ArticleContoller implements ArticleApi {
 
     private ArticleService articleService;

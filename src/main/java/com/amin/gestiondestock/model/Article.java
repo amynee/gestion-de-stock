@@ -31,7 +31,7 @@ public class Article extends AbstractEntity {
 	private String designation;
 	
 	@Column(name="prixunitaireht")
-	private String prixUnitaireHt;
+	private BigDecimal prixUnitaireHt;
 	
 	@Column(name="tauxtva")
 	private BigDecimal tauxTva;

@@ -1,13 +1,11 @@
 package com.amin.gestiondestock.model;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -31,14 +29,22 @@ public class AbstractEntity implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	
-	@CreatedDate
-	@Column(name="creationDate", nullable=false)
-	@JsonIgnore
-	private Date creationDate;
+	//@CreatedDate
+	@Column(name="creationDate")
+	private Instant creationDate;
 	
-	@LastModifiedDate
+	//@LastModifiedDate
 	@Column(name="lastModifiedDate")
-	@JsonIgnore
-	private Date lastUpdateDate;
+	private Instant lastModificationDate;
+
+	@PrePersist
+	void prePersist() {
+		creationDate = Instant.now();
+	}
+
+	@PreUpdate
+	void preUpdate() {
+		lastModificationDate = Instant.now();
+	}
 
 }
