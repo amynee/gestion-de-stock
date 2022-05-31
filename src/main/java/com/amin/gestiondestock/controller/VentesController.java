@@ -1,7 +1,6 @@
 package com.amin.gestiondestock.controller;
 
 import com.amin.gestiondestock.controller.api.VentesApi;
-import com.amin.gestiondestock.dto.CommandeFournisseurDto;
 import com.amin.gestiondestock.dto.VentesDto;
 import com.amin.gestiondestock.services.VentesService;
 import org.springframework.beans.factory.annotation.Autowired;

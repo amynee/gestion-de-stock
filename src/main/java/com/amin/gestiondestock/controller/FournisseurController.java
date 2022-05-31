@@ -4,6 +4,7 @@ import com.amin.gestiondestock.controller.api.FournisseurApi;
 import com.amin.gestiondestock.dto.CategoryDto;
 import com.amin.gestiondestock.dto.FournisseurDto;
 import com.amin.gestiondestock.services.FournisseurService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class FournisseurController implements FournisseurApi {
 
     private FournisseurService fournisseurService;
 
+    @Autowired
     public FournisseurController(FournisseurService fournisseurService) { this.fournisseurService = fournisseurService; }
 
     @Override

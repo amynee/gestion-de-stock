@@ -1,16 +1,15 @@
 package com.amin.gestiondestock.controller.api;
 
 import com.amin.gestiondestock.dto.ClientDto;
+import io.swagger.annotations.Api;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.amin.gestiondestock.utils.Constants.APP_ROOT;
 
+@Api(APP_ROOT + "/clients")
 public interface ClientApi {
 
     @PostMapping(value = APP_ROOT + "/clients/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,6 +22,6 @@ public interface ClientApi {
     @GetMapping(value = APP_ROOT + "/clients/all", produces = MediaType.APPLICATION_JSON_VALUE)
     List<ClientDto> findAll();
 
-    @GetMapping(value = APP_ROOT + "/clients/delete/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = APP_ROOT + "/clients/delete/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
     void delete(@PathVariable("idClient") Integer id);
 }
