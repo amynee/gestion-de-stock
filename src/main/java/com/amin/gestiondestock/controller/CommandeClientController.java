@@ -4,6 +4,8 @@ import com.amin.gestiondestock.controller.api.CommandeClientApi;
 import com.amin.gestiondestock.dto.CommandeClientDto;
 import com.amin.gestiondestock.services.CommandeClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,27 +19,29 @@ public class CommandeClientController implements CommandeClientApi {
     public CommandeClientController(CommandeClientService commandeClientService) { this.commandeClientService = commandeClientService; }
 
     @Override
-    public CommandeClientDto save(CommandeClientDto dto) {
-        return commandeClientService.save(dto);
+    public ResponseEntity<CommandeClientDto> save(CommandeClientDto dto) {
+        return ResponseEntity.ok(commandeClientService.save(dto));
+        // return ResponseEntity.status(HttpStatus.OK).body(commandeClientService.save(dto));
     }
 
     @Override
-    public CommandeClientDto findById(Integer id) {
-        return commandeClientService.findById(id);
+    public ResponseEntity<CommandeClientDto> findById(Integer id) {
+        return ResponseEntity.ok(commandeClientService.findById(id));
     }
 
     @Override
-    public CommandeClientDto findCommandeClientByCode(String code) {
-        return commandeClientService.findByCode(code);
+    public ResponseEntity<CommandeClientDto> findCommandeClientByCode(String code) {
+        return ResponseEntity.ok(commandeClientService.findByCode(code));
     }
 
     @Override
-    public List<CommandeClientDto> findAll() {
-        return commandeClientService.findAll();
+    public ResponseEntity<List<CommandeClientDto>> findAll() {
+        return ResponseEntity.ok(commandeClientService.findAll());
     }
 
     @Override
-    public void delete(Integer id) {
+    public ResponseEntity delete(Integer id) {
         commandeClientService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
