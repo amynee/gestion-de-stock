@@ -9,11 +9,14 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL5Dialect
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        ejb: 
+          interceptor: com.amin.gestiondestock.interceptor.Interceptor
+    
 server:
-  port: 8086
+  port: 8886
 
 flickr:
   apiKey: 4322fae6de24711fd053991dfb07d16f

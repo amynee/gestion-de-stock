@@ -5,10 +5,13 @@ import com.amin.gestiondestock.exception.EntityNotFoundException;
 import com.amin.gestiondestock.exception.ErrorCodes;
 import com.amin.gestiondestock.exception.InvalidEntityException;
 import com.amin.gestiondestock.model.Category;
+import com.amin.gestiondestock.repository.ArticleRepository;
 import com.amin.gestiondestock.repository.CategoryRepository;
 import com.amin.gestiondestock.services.CategoryService;
 import com.amin.gestiondestock.validator.CategoryValidator;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -22,7 +25,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     private CategoryRepository categoryRepository;
 
-
+    @Autowired
+    public CategoryServiceImpl(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
+    
     @Override
     public CategoryDto save(CategoryDto dto) {
         List<String> errors = CategoryValidator.validate(dto);

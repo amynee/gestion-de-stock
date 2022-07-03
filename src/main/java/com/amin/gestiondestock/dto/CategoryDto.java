@@ -16,7 +16,7 @@ public class CategoryDto {
 	
 	private String designation;
 	
-	private List<ArticleDto> articles;
+	//private List<ArticleDto> articles;
 	
 	public static CategoryDto fromEntity(Category category) {
 		if (category == null) {
@@ -41,7 +41,6 @@ public class CategoryDto {
 		category.setId(categoryDto.getId());
 		category.setCode(categoryDto.getCode());
 		category.setDesignation(categoryDto.getDesignation());
-		
 		return category;
 	}
 

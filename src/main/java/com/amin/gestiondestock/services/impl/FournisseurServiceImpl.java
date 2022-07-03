@@ -9,6 +9,8 @@ import com.amin.gestiondestock.repository.FournisseurRepository;
 import com.amin.gestiondestock.services.FournisseurService;
 import com.amin.gestiondestock.validator.FournisseurValidator;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     private FournisseurRepository fournisseurRepository;
 
+    @Autowired
     public FournisseurServiceImpl(FournisseurRepository fournisseurRepository) { this.fournisseurRepository = fournisseurRepository; }
 
     @Override
