@@ -1,8 +1,10 @@
 package com.amin.gestiondestock.dto;
 
+import java.time.Instant;
 import java.util.List;
 
 import com.amin.gestiondestock.model.Utilisateur;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +17,7 @@ public class UtilisateurDto {
 	
 	private String nom;
 	
-	private String dateDeNaissance;
+	private Instant dateDeNaissance;
 	
 	private String motDePasse;
 	
@@ -29,6 +31,7 @@ public class UtilisateurDto {
 	
 	private EntrepriseDto entreprise;
 	
+	@JsonIgnore
 	private List<RolesDto> roles;
 	
 	public static UtilisateurDto fromEntity(Utilisateur utilisateur) {

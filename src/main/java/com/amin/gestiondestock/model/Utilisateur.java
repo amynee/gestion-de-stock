@@ -1,5 +1,6 @@
 package com.amin.gestiondestock.model;
 
+import java.time.Instant;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -28,7 +29,7 @@ public class Utilisateur extends AbstractEntity{
 	private String nom;
 	
 	@Column(name="datedenaissance")
-	private String dateDeNaissance;
+	private Instant dateDeNaissance;
 	
 	@Column(name="motdepasse")
 	private String motDePasse;

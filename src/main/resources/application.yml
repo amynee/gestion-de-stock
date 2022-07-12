@@ -16,7 +16,7 @@ spring:
           interceptor: com.amin.gestiondestock.interceptor.Interceptor
     
 server:
-  port: 8886
+  port: 8086
 
 flickr:
   apiKey: 4322fae6de24711fd053991dfb07d16f

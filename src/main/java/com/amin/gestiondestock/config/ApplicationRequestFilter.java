@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jboss.logging.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +24,7 @@ import com.amin.gestiondestock.utils.JwtUtil;
 public class ApplicationRequestFilter extends OncePerRequestFilter {
 	
 	@Autowired
-	private ApplicationUserDetailsService userDetailsService;
+	private ApplicationUserDetailsService service;
 	
 	@Autowired
 	private JwtUtil jwtUtil;
@@ -32,16 +33,18 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
 		
 		final String authHeader = request.getHeader("Authorization");
-		String username = null;
+		String userEmail = null;
 		String jwt = null;
+		String idEntreprise = null;
 		
-		if (StringUtils.hasLength(authHeader) && authHeader.startsWith("Bearer ")) {
+		if (authHeader != null && authHeader.startsWith("Bearer ")) {
 			jwt = authHeader.substring(7);
-			username = jwtUtil.extractUsername(jwt);
+			userEmail = jwtUtil.extractUsername(jwt);
+			idEntreprise = jwtUtil.extractIdEntreprise(jwt);
 		}
 		
-		if (StringUtils.hasLength(username) && SecurityContextHolder.getContext().getAuthentication() == null) {
-			UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+		if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+			UserDetails userDetails = this.service.loadUserByUsername(userEmail);
 			if (jwtUtil.validateToken(jwt, userDetails)) {
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities()
@@ -54,10 +57,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
 				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 			}
 		}
-		
+		MDC.put("idEntreprise", idEntreprise);
 		chain.doFilter(request, response);
-
 	}
-	
-
 }

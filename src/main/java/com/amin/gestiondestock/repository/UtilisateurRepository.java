@@ -9,6 +9,6 @@ import com.amin.gestiondestock.model.Utilisateur;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
 
-	@Query("Select u from Utilisateur u where u.email = :email")
+	@Query(value = "select u from Utilisateur u where u.email = :email")
 	Optional<Utilisateur> findUtilisateurByEmail(String email);
 }

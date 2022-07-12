@@ -2,6 +2,7 @@ package com.amin.gestiondestock.dto;
 
 import java.util.List;
 import com.amin.gestiondestock.model.Category;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,8 @@ public class CategoryDto {
 	
 	private String designation;
 	
-	//private List<ArticleDto> articles;
+	@JsonIgnore
+	private List<ArticleDto> articles;
 	
 	public static CategoryDto fromEntity(Category category) {
 		if (category == null) {

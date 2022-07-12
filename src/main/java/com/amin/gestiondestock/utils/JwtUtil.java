@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.amin.gestiondestock.model.auth.ExtendedUser;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
@@ -17,7 +19,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 	
-	private String SECRET_Key = "secret";
+	private String SECRET_KEY = "secret";
 	public static final long JWT_TOKEN_VALIDITY = 10 * 60 * 60;
 	
     public String extractUsername(String token) {
@@ -39,7 +41,7 @@ public class JwtUtil {
     }
 
     private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(SECRET_Key).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
     private Boolean isTokenExpired(String token) {
@@ -47,16 +49,18 @@ public class JwtUtil {
         return expiration.before(new Date());
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(ExtendedUser userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, userDetails.getUsername());
+        return doGenerateToken(claims, userDetails);
     }
 
-    private String doGenerateToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+    private String doGenerateToken(Map<String, Object> claims, ExtendedUser userDeatils) {
+        return Jwts.builder().setClaims(claims)
+        		.setSubject(userDeatils.getUsername())
+        		.setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                .claim("idEntreprise", "")
-                .signWith(SignatureAlgorithm.HS512, SECRET_Key).compact();
+                .claim("idEntreprise", userDeatils.getIdEntreprise().toString())
+                .signWith(SignatureAlgorithm.HS512, SECRET_KEY).compact();
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {

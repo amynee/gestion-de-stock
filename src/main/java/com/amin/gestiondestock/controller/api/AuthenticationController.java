@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.amin.gestiondestock.dto.auth.AuthenticationRequest;
 import com.amin.gestiondestock.dto.auth.AuthenticationResponse;
+import com.amin.gestiondestock.model.auth.ExtendedUser;
 import com.amin.gestiondestock.services.auth.ApplicationUserDetailsService;
 import com.amin.gestiondestock.utils.JwtUtil;
 
@@ -40,7 +41,7 @@ public class AuthenticationController {
 		);
 		
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getLogin());
-		final String jwt = jwtUtil.generateToken(userDetails);
+		final String jwt = jwtUtil.generateToken((ExtendedUser) userDetails);
 		return ResponseEntity.ok(AuthenticationResponse.builder().accessToken(jwt).build());
 		
 	}

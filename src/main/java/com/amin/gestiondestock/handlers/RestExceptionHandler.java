@@ -2,6 +2,7 @@ package com.amin.gestiondestock.handlers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -26,17 +27,17 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>(errorDto, notFound);
 	}
 	
-	@ExceptionHandler(InvalidEntityException.class)
+	@ExceptionHandler(BadCredentialsException.class)
 	public ResponseEntity<ErrorDto> handleExcception(InvalidEntityException exception, WebRequest webRequest) {
 		
-		final HttpStatus badResuest = HttpStatus.BAD_REQUEST;
+		final HttpStatus badRequest = HttpStatus.BAD_REQUEST;
 		final ErrorDto errorDto = ErrorDto.builder()
 				.code(exception.getErrorCode())
-				.httpCode(badResuest.value())
+				.httpCode(badRequest.value())
 				.message(exception.getMessage())
 				.errors(exception.getErrors())
 				.build();
 		
-		return new ResponseEntity<>(errorDto, badResuest);
+		return new ResponseEntity<>(errorDto, badRequest);
 	}
 }

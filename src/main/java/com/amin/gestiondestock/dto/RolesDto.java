@@ -13,9 +13,9 @@ public class RolesDto {
 
 	private String roleName;
 	
-	private Utilisateur utilisateur;
+	private UtilisateurDto utilisateur;
 	
-	public static RolesDto fromEntity(Roles roles) {
+	public static RolesDtoBuilder fromEntity(Roles roles) {
 		if (roles == null) {
 			return null;
 		}
@@ -23,11 +23,10 @@ public class RolesDto {
 		return RolesDto.builder()
 				.id(roles.getId())
 				.roleName(roles.getRoleName())
-				.utilisateur(roles.getUtilisateur())
-				.build();
+				.utilisateur(UtilisateurDto.fromEntity(roles.getUtilisateur()));
 	}
 	
-	public static Roles toEtity(RolesDto rolesDto) {
+	public static Roles toEntity(RolesDto rolesDto) {
 		if (rolesDto == null) {
 			return null;
 		}
@@ -35,8 +34,7 @@ public class RolesDto {
 		Roles roles = new Roles();
 		roles.setId(rolesDto.getId());
 		roles.setRoleName(rolesDto.getRoleName());
-		roles.setUtilisateur(rolesDto.getUtilisateur());
-		
+		roles.setUtilisateur(UtilisateurDto.toEntity(rolesDto.getUtilisateur()));
 		return roles;
 	}
 }
