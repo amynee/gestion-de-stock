@@ -64,6 +64,7 @@ public class UtilisateurDto {
 		utilisateur.setMotDePasse(utilisateurDto.getMotDePasse());
 		utilisateur.setEmail(utilisateurDto.getEmail());
 		utilisateur.setDateDeNaissance(utilisateurDto.getDateDeNaissance());
+		utilisateur.setEntreprise(EntrepriseDto.toEntity(utilisateurDto.getEntreprise()));
 		utilisateur.setAdresse(AdresseDto.toEntity(utilisateurDto.getAdresse()));
 		utilisateur.setPhoto(utilisateurDto.getPhoto());
 		

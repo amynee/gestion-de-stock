@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,14 +33,20 @@ public class AuthenticationController {
 	private JwtUtil jwtUtil;
 	
 	@PostMapping("/authenticate")
-	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-		authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(
-						request.getLogin(),
-						request.getPassword()
-				)
-		);
-		
+	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) throws AuthenticationException {
+		System.out.println(request);
+		try {
+			authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(
+							request.getLogin(),
+							request.getPassword()
+					)
+			);
+		} catch (AuthenticationException e) {
+			System.out.println((e));
+		}
+
+		System.out.println("-----------");
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getLogin());
 		final String jwt = jwtUtil.generateToken((ExtendedUser) userDetails);
 		return ResponseEntity.ok(AuthenticationResponse.builder().accessToken(jwt).build());

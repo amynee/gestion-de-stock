@@ -46,7 +46,7 @@ public class EntrepriseServiceImpl implements EntrepriseService {
 
         EntrepriseDto savedEntreprise = EntrepriseDto.fromEntity(
                 entrepriseRepository.save(
-                        EntrepriseDto.toEtity(dto)
+                        EntrepriseDto.toEntity(dto)
                 )
         );
         

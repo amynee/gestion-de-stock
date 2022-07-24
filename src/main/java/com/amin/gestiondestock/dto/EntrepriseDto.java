@@ -48,7 +48,7 @@ public class EntrepriseDto {
 				.build();
 	}
 	
-	public static Entreprise toEtity(EntrepriseDto entrepriseDto) {
+	public static Entreprise toEntity(EntrepriseDto entrepriseDto) {
 		if (entrepriseDto == null) {
 			return null;
 		}

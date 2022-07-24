@@ -32,6 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
     
     @Override
     public CategoryDto save(CategoryDto dto) {
+        System.out.println(dto);
         List<String> errors = CategoryValidator.validate(dto);
         if (!errors.isEmpty()) {
             log.error("Category is not valid{}", dto);

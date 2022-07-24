@@ -23,7 +23,6 @@ import com.amin.gestiondestock.services.auth.ApplicationUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-@EnableWebMvc
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -48,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 					"/swagger-ressources/**",
 					"/configuration/ui",
 					"/configuration/security",
+					"/swagger-ui.html",
 					"/swagger-ui/index.html",
 					"/webjars/**",
 					"/v3/api-docs/**",

@@ -18,6 +18,7 @@ public class CategoryController implements CategoryApi {
 
     @Override
     public CategoryDto save(CategoryDto dto) {
+        System.out.println("here");
         return categoryService.save(dto);
     }
 
